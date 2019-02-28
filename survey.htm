@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="flex">
+        <div class="p"><h1 id="title">Survey Form</h1></div>
+        <div class="main-survey flex p">
+            <div><p id="description" class="p">Let us know how we can improve</p></div>
+            <div>
+                <form id="survey-form" action="">
+                  <div class="flex row p">
+                    <div class="label">
+                      <label for="name-label" id="name-label">* Name:</label>
+                    </div>
+                    <div class="inp">
+                      <input type="text" name="name" id="name" placeholder="Enter your name" required>
+                    </div>
+                  </div>
+                  <div class="flex row p">
+                    <div class="label">
+                      <label for="email-label" id="email-label">* Email:</label>
+                    </div>
+                    <div class="inp">
+                      <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                  </div>
+                  <div class="flex row p">
+                    <div class="label">
+                      <label for="age" id="number-label">* Age:</label>
+                    </div>
+                    <div class="inp">
+                      <input type="number" name="number" id="number" min="18" max="50" placeholder="enter your age">
+                    </div>
+                  </div>
+                  <div class="flex row p">
+                    <div class="label">
+                      <label for="description">Which Describes you best ? :</label>
+                    </div>
+                    <div class="inp">
+                      <select class="myList" id="dropdown">
+                        <option value = "1">Student</option>
+                        <option value = "2">Professional</option>
+                        <option value = "3">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="flex row p">
+                    <div class="label">
+                      <label for="description">* How likely is that you would recommend freeCodeCamp to a friend? :</label>
+                    </div>
+                    <div class="inp">
+                      <div class="flex row">
+                        <div class="pi"><input type="radio" name="radio-buttons" value="1" id="sure" checked></div>
+                        <div class="inp"><label for="sure">Sure</label></div>
+                      </div>
+                      <div class="flex row">
+                        <div class="pi"><input type="radio" name="radio-buttons" value="2" id="notsure"></div>
+                        <div class="inp"><label for="notsure">Not Sure</label></div>
+                      </div>
+                      <div class="flex row">
+                        <div class="pi"><input type="radio" name="radio-buttons" value="3" id="notsure"></div>
+                        <div class="inp"><label for="maybe">Maybe</label></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex row p">
+                    <div class="label">
+                      <label for="description">What you want more ? :</label>
+                    </div>
+                    <div class="inp">
+                      <div class="flex row">
+                        <div class="pi"><input type="checkbox" name="checkbox" value="1" id="chk1" checked></div>
+                        <div class="inp"><label for="maybe">Datascience</label></div>
+                      </div>
+                      <div class="flex row">
+                        <div class="pi"><input type="checkbox" name="checkbox" value="2" id="chk2"></div>
+                        <div class="inp"><label for="chk2">Deep learning</label></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <textarea rows = "2" cols = "1" name = "description">
+            Enter your name
+         </textarea>
+                  </div>
+                  <div class="flex">
+                    <input type="submit" id="submit" name="submit" value="Submit">
+                  </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

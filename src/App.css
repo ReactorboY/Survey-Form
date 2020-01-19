@@ -36,6 +36,7 @@ main {
 #date {
   opacity: 0.8;
   font-size: 3rem;
+  padding-right: 10px;
   display: inline;
   font-weight: bold;
 }

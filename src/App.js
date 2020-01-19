@@ -20,9 +20,9 @@ class App extends Component {
 
   onDismiss(id) {
     const isNotId = item => item.objectID !== id;
-    const updatedHits = this.state.list.hits.filter(isNotId);
+    const updatedHits = this.state.list.filter(isNotId);
     this.setState({
-      list: { ...this.state.list, hits: updatedHits }
+      list: updatedHits
     });
   }
 
@@ -31,7 +31,7 @@ class App extends Component {
   componentDidMount() {
     fetch(`${url}`)
       .then(res =>  res.json())
-      .then(result => this.setSearchTopStories(result))
+      .then(result => this.setSearchTopStories(result.hits))
       .catch(e => console.log(e))
   }
 
@@ -40,7 +40,7 @@ class App extends Component {
     if (!list) return null
     return (
       <div className="table">
-                {list.hits.map(item => 
+                {list.map(item => 
                     <div key={item.objectID} className="table-row">
                         <span style={{ width: '40%' }}>
                         <a href={item.url}>{item.title}</a>

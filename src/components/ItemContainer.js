@@ -28,7 +28,7 @@ const list = [
     }
 ]
 
-export default class ItemContainer extends Component {
+class ItemContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -38,7 +38,6 @@ export default class ItemContainer extends Component {
     }
 
     onDismiss = id => {
-        console.log(id)
         const updatedList = this.state.list.filter(item => item.id !== id)
         this.setState({ list: updatedList})
     }
@@ -51,7 +50,7 @@ export default class ItemContainer extends Component {
                     <div key={item.id} className="item">
                         <div className="flexBig">{item.title}</div>
                         <button onClick={() => this.onDismiss(item.id)} type="button" className="dismiss">
-                            DONE
+                            <i className="material-icons">delete_sweep</i>
                         </button>
                     </div>    
                 )}
@@ -59,3 +58,5 @@ export default class ItemContainer extends Component {
         )
     }
 }
+
+export default ItemContainer

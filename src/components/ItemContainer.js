@@ -34,7 +34,15 @@ export default class ItemContainer extends Component {
         this.state = {
             list,
         }
+        this.onDismiss = this.onDismiss.bind(this)
     }
+
+    onDismiss = id => {
+        console.log(id)
+        const updatedList = this.state.list.filter(item => item.id !== id)
+        this.setState({ list: updatedList})
+    }
+
     render() {
         const {list} = this.state
         return (
@@ -42,7 +50,7 @@ export default class ItemContainer extends Component {
                 {list.map(item => 
                     <div key={item.id} className="item">
                         <div className="flexBig">{item.title}</div>
-                        <button type="button" className="dismiss">
+                        <button onClick={() => this.onDismiss(item.id)} type="button" className="dismiss">
                             DONE
                         </button>
                     </div>    

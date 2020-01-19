@@ -3,17 +3,51 @@ h1 {
   padding: 0;
 }
 main {
-  width: 80vw;
+  width: 90vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #3282b8;
   margin: 3rem auto;
-  /* border: 1px solid #1b262c; */
-  ;
+  background: #f9fcfb;
+  box-shadow: 0px 0px 20px 0px #93a9b5;
   height: 80vh;
+  padding: 1rem;
 }
 
-.todoContainer {
+#todoContainer {
   color:#1b262c;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+.b {
+    border: 1px solid #000;
+}
+
+.itemContainer {
+  width: 50%;
+  padding: 10px;
+  min-width: 200px;
+  display: flex;
+  margin: 0 auto;
+}
+
+#date {
+  opacity: 0.8;
+  font-size: 3rem;
+  display: inline;
+  font-weight: bold;
+}
+.item {
+  padding:20px 0;
+  display: flex;
+  color: #1b262c;
+}
+
+.flexBig {
+  flex:80%
+}
+
+.flexSmall {
+  flex: 20%;
 }

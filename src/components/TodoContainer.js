@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import DateContainer from './DateContainer'
 
 class TodoContainer extends Component {
     render() {
         return (
             <div id="todoContainer">
-                <h1>Hi</h1>
+                <DateContainer/>
             </div>
         )
     }

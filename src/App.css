@@ -18,6 +18,7 @@ main {
   color:#1b262c;
   width: 100%;
   overflow: hidden;
+  overflow-y: scroll;
   height: 100%;
 }
 .b {
@@ -46,6 +47,15 @@ main {
 
 .flexBig {
   flex:80%
+}
+
+.dismiss {
+  border: none;
+  background: #0f4c75;
+  padding: 10px;
+  border-radius: 5px;
+  width: 5rem;
+  color: #eee;
 }
 
 .flexSmall {

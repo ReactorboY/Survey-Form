@@ -42,7 +42,9 @@ export default class ItemContainer extends Component {
                 {list.map(item => 
                     <div key={item.id} className="item">
                         <div className="flexBig">{item.title}</div>
-                        <div className="flexSmall">{item.id}</div>
+                        <button type="button" className="dismiss">
+                            DONE
+                        </button>
                     </div>    
                 )}
             </div>

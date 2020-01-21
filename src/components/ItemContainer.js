@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import {withFirebase} from './firebase'
+import NewItem from './NewItem'
 
 const ItemContainer = () => (
     <React.Fragment>
+        <NewItem/>
         <ItemComponent/>
     </React.Fragment>
 )
@@ -19,7 +21,6 @@ class ItemClass extends Component {
     onDismiss = id => {
         this.props.firebase.notes().doc(id).delete().then(() => console.log('Successfully Deleted'))
             .catch(e => console.log(e))
-        console.log(id)
     }
 
     componentDidMount() {
@@ -29,7 +30,6 @@ class ItemClass extends Component {
                 data['id'] = _doc.id
                 return data
             })
-            console.log(notes)
             this.setState({
                 list: notes
             })

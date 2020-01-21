@@ -17,15 +17,22 @@ class ItemClass extends Component {
     }
 
     onDismiss = id => {
-        const updatedList = this.state.list.filter(item => item.id !== id)
-        this.setState({ list: updatedList})
+        this.props.firebase.notes().doc(id).delete().then(() => console.log('Successfully Deleted'))
+            .catch(e => console.log(e))
+        console.log(id)
     }
 
     componentDidMount() {
-        this.props.firebase.notes().get().then(querySnapshot => {
-            const data = querySnapshot.docs.map(doc => doc.data())
-            console.log(data)
-            this.setState({list:data})
+        this.props.firebase.notes().onSnapshot(serverUpdate => {
+            const notes = serverUpdate.docs.map(_doc => {
+                const data = _doc.data()
+                data['id'] = _doc.id
+                return data
+            })
+            console.log(notes)
+            this.setState({
+                list: notes
+            })
         })
     }
 

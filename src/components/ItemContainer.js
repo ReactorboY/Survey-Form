@@ -1,38 +1,17 @@
 import React, { Component } from 'react'
+import {withFirebase} from './firebase'
 
-const list = [
-    {
-        title:'Add list',
-        id:0
-    },
-    {
-        title:'Delete item from list',
-        id:1
-    },
-    {
-        title: 'Update todo item',
-        id:2
-    },
-    {
-        title:'Improve the design',
-        id:3
-    }, {
-        title: 'Improve the design',
-        id: 4
-    }, {
-        title: 'Improve the design',
-        id: 5
-    }, {
-        title: 'ove the design',
-        id: 6
-    }
-]
+const ItemContainer = () => (
+    <React.Fragment>
+        <ItemComponent/>
+    </React.Fragment>
+)
 
-class ItemContainer extends Component {
+class ItemClass extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            list,
+            list:[]
         }
         this.onDismiss = this.onDismiss.bind(this)
     }
@@ -40,6 +19,14 @@ class ItemContainer extends Component {
     onDismiss = id => {
         const updatedList = this.state.list.filter(item => item.id !== id)
         this.setState({ list: updatedList})
+    }
+
+    componentDidMount() {
+        this.props.firebase.notes().get().then(querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data())
+            console.log(data)
+            this.setState({list:data})
+        })
     }
 
     render() {
@@ -58,5 +45,7 @@ class ItemContainer extends Component {
         )
     }
 }
+
+const ItemComponent = withFirebase(ItemClass)
 
 export default ItemContainer

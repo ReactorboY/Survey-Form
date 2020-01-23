@@ -3,10 +3,10 @@ import './landing.css'
 
 const Landing = () => (
     <main>
-        <div>
+        <div style={{flex:"70%"}}>
             <h1>Hello People</h1>
         </div>
-        <div>2</div>
+        <div style={{flex:"30%"}}>2</div>
     </main>
 )
 

@@ -1,12 +1,13 @@
 import React from 'react'
-import TodoContainer from './components/todos/TodoContainer'
+import Landing from './components/Landing'
 import './App.css'
 
 const App = () => (
-  <main>
-    <TodoContainer/>
-  </main>
+  <React.Fragment>
+    <Landing/>
+  </React.Fragment>
 )
+
 
 
 export default App

@@ -41,7 +41,7 @@ button {
   text-transform: uppercase;
 }
 blockquote::before {
-  content: "''";
+  content: "\0201B";
   font-size: 72px;
   line-height: 0;
   position: relative;

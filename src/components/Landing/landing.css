@@ -29,3 +29,33 @@ main {
     border-radius: 10px;
     width: 340px;
 }
+
+#block {
+    width: 40%;
+    max-width: 340px;
+}
+
+/* responsive works */
+@media only screen and ( min-width:360px) and (max-width:720px) {
+    h1 {
+        font-size: 4rem;
+    }
+
+    main {
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+
+    #landing_button {
+        max-width: 260px;
+    }
+}
+
+@media only screen and (max-width:320px) {
+    h1 {
+        font-size: 1rem;
+    }
+    #landing_button {
+        max-width: 150px;
+    }
+}

@@ -1,7 +1,15 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 import './landing.css'
 
-const Landing = () => (
+const Landing = () => {
+    let history = useHistory()
+
+    function handleClick() {
+      history.push('/home')
+    } 
+
+  return  (
     <main>
         <div className="container">
             <h1>Todo<span>.now</span></h1>
@@ -11,9 +19,9 @@ const Landing = () => (
             Manage Your life instead managing your todo <span>app</span>
         </blockquote>
         <div className="container">
-            <button id="landing_button">let's Todo</button>
+            <button id="landing_button" onClick={handleClick}>let's Todo</button>
         </div>
     </main>
-)
+)}
 
 export default Landing

@@ -6,7 +6,7 @@ const Landing = () => {
     let history = useHistory()
 
     function handleClick() {
-      history.push('/home')
+      history.push('/signup')
     } 
 
   return  (

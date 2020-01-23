@@ -1,4 +1,5 @@
 import app from 'firebase/app'
+import 'firebase/auth'
 require('firebase/firestore')
 
 const config = {
@@ -13,9 +14,22 @@ const config = {
 class Firebase {
     constructor() {
         app.initializeApp(config)
+        this.auth = app.auth()
         this.db = app.firestore()
+        this.provider = new app.auth.GoogleAuthProvider()
     }
+    //  AUth API's
+    //  Google SignIn
+    g = () =>  this.auth.signInWithPopup(this.provider)
 
+
+    docreateUser = (email,password) => 
+      this.auth.createUserWithEmailAndPassword(email,password)
+
+    dosignInUser = (email,password) =>  
+      this.auth.signInWithEmailAndPassword(email,password)
+    
+    doSignOut = () => this.auth.signOut()
     notes = () =>  this.db.collection('todos')
 }
 

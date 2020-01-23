@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import {withFirebase} from './firebase'
-import NewItem from './NewItem'
+import {withFirebase} from '../firebase'
+import NewItem from '../NewItem'
 
 const ItemContainer = () => (
     <React.Fragment>

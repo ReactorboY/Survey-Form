@@ -3,10 +3,17 @@ import './landing.css'
 
 const Landing = () => (
     <main>
-        <div style={{flex:"70%"}}>
-            <h1>Hello People</h1>
+        <div className="container">
+            <h1>Todo<span>.now</span></h1>
+            <p style={{textAlign:"end"}}>Simple Yet Productive</p>
         </div>
-        <div style={{flex:"30%"}}>2</div>
+        <div className="container" style={{width:"40%",maxWidth:"340px"}}>
+            <blockquote>Manage Your life instead managing your todo <span>app</span>
+            </blockquote>
+        </div>
+        <div className="container">
+            <button id="landing_button">let's Todo</button>
+        </div>
     </main>
 )
 

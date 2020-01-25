@@ -17,24 +17,14 @@ class SignUpForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email:'',
-            password:'',
-            error:[]
+            
         }
     }
 
     onSubmit = e => {
         e.preventDefault()
         console.log('çlicked')
-        // const {email,password} = this.state
-        // this.props.firebase.docreateUser(email,password)
-        //     .then(authUser => {
-        //         this.setState({
-        //             email:'',
-        //             password:''
-        //         })
-        //     }).catch(e => console.log(e))
-        this.props.firebase.g().then((result) => {
+        this.props.firebase.googleSignIn().then((result) => {
             console.log(result)
         }).catch((err) => {
             

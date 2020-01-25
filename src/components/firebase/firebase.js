@@ -20,7 +20,7 @@ class Firebase {
     }
     //  AUth API's
     //  Google SignIn
-    g = () =>  this.auth.signInWithPopup(this.provider)
+    googleSignIn = () =>  this.auth.signInWithPopup(this.provider)
 
 
     docreateUser = (email,password) => 

@@ -58,10 +58,11 @@ class SignUpForm extends Component {
                         </div>
                         <button className="submit-button" type="submit">Sign Up</button>
                     </div>
+                    <div className="form-group">
+                        <button className="googleSignin"></button>
+                    </div>
                 </form>
                 <div className="signup-info flex-center">
-                    <div>Hussain</div>
-                    <div>working</div>
                 </div>
             </div>     
         )

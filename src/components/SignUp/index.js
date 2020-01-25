@@ -21,17 +21,47 @@ class SignUpForm extends Component {
     }
     render() {
         return (
-            <div className="container flex-center">
-                <form className="signup-form b flex-center">
-                    <div className="signup-text">
-                        <h2>Sign Up</h2>
+            <div className="scontainer flex-center">
+                <form className="signup-form flex-center">
+                    <div className="form-group" style={{justifySelf:"flex-start"}}>
+                        <p style={{fontSize:"30px"}}>Sign Up</p>
                     </div>
-                    <input type="text" placeholder="Enter Name" />
-                    <input type="email" placeholder="Enter email" />
-                    <input type="password" placeholder="Enter password" />
+                    <div className="form-group">
+                        <div className="icon">
+                            <i className="material-icons">
+                            how_to_reg
+                            </i>
+                        </div>
+                        <input type="text" placeholder="Enter Name" className="no-border bottom-border" />
+                    </div>
+                    <div className="form-group">
+                        <div className="icon">
+                            <i className="material-icons">
+                            email
+                            </i>
+                        </div>
+                        <input type="email" placeholder="Enter email" className="no-border bottom-border" />
+                    </div>
+                    <div className="form-group">
+                        <div className="icon">
+                            <i className="material-icons">
+                            lock
+                            </i>
+                        </div>
+                        <input type="password" placeholder="Enter password" className="no-border bottom-border" />
+                    </div>
+                    <div className="form-group">
+                        <div style={{paddingBottom:"25px"}}>
+                            <input type="checkbox" id="terms" name="terms"
+                            defaultChecked/>
+                            <label htmlFor="terms">I am agree to all terms & conditions</label>
+                        </div>
+                        <button className="submit-button" type="submit">Sign Up</button>
+                    </div>
                 </form>
-                <div className="signup-info b flex-center">
-                    <h2>Sign up Form</h2>
+                <div className="signup-info flex-center">
+                    <div>Hussain</div>
+                    <div>working</div>
                 </div>
             </div>     
         )

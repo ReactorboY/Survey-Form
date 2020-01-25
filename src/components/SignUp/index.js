@@ -4,8 +4,7 @@ import {FirebaseContext} from '../firebase'
 export default function SIgnUp() {
     console.log('Sign Up')
     return (
-        <div>
-            <h1>SignUp</h1>
+        <div className="flexy">
             <FirebaseContext.Consumer>
                 {firebase => <SignUpForm firebase={firebase}/>}
             </FirebaseContext.Consumer>
@@ -20,46 +19,21 @@ class SignUpForm extends Component {
             
         }
     }
-
-    onSubmit = e => {
-        e.preventDefault()
-        console.log('çlicked')
-        this.props.firebase.googleSignIn().then((result) => {
-            console.log(result)
-        }).catch((err) => {
-            
-        });
-           
-    }
-
-    onChange = e => {
-        this.setState({[e.target.name]:e.target.value})
-    }
-
     render() {
-        const {error,email, password} = this.state
-        const isInvalid = password === '' || email === '' 
         return (
-            <form onSubmit={this.onSubmit}>
-                {error && 
-                <div>{error}
-                    </div>}
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-            <button type="submit" disabled={isInvalid}>Sign Up</button>
-        </form>
+            <div className="container flex-center">
+                <form className="signup-form b flex-center">
+                    <div className="signup-text">
+                        <h2>Sign Up</h2>
+                    </div>
+                    <input type="text" placeholder="Enter Name" />
+                    <input type="email" placeholder="Enter email" />
+                    <input type="password" placeholder="Enter password" />
+                </form>
+                <div className="signup-info b flex-center">
+                    <h2>Sign up Form</h2>
+                </div>
+            </div>     
         )
     }
 }

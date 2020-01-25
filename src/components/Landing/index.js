@@ -12,7 +12,7 @@ const Landing = () => {
   return  (
     <main>
         <div className="container">
-            <h1>Todo<span>.now</span></h1>
+            <h1 className="title">Todo<span>.now</span></h1>
             <p style={{textAlign:"end"}}>Simple Yet Productive</p>
         </div>
         <blockquote id="block" className="container">

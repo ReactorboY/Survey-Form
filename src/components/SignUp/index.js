@@ -18,7 +18,8 @@ class SignUpForm extends Component {
         this.state = {
             name:'',
             email:'',
-            password:''
+            password:'',
+            user:''
         }
     }
 
@@ -28,6 +29,31 @@ class SignUpForm extends Component {
 
     onChange = e => {
         this.setState({[e.target.name]: e.target.value})
+    }
+
+    googleSignIn = () => {
+        console.log('google')
+        this.props.firebase.googleSignIn()
+            .then(result => {
+                console.log(result)
+                this.setState({
+                    user:result,
+                    name:'',
+                    password:'',
+                    email:''
+                })
+            }).catch(e => console.log(e))
+    }
+
+    githubSignIn = () => {
+        console.log('github')
+        this.props.firebase.githubSignIn()
+            .then(result => {
+                if (result.credential) {
+                    let token = result.credential.accessToken;
+                    console.log(token)
+                }
+            }).catch(e => console.log(e))
     }
 
     render() {
@@ -73,10 +99,10 @@ class SignUpForm extends Component {
                     </div>
                 </form>
                 <div style={{marginTop:"1rem"}}>
-                    <button className="social-button">
+                    <button className="social-button" onClick={this.googleSignIn}>
                         <img src="/img/search.svg" alt="google sign in"/>
                     </button>
-                    <button className="social-button">
+                    <button className="social-button" onClick={this.githubSignIn}>
                         <img src="/img/github.svg" alt="Github Sign in" style={{width:"100%",height:"100%"}}/>
                     </button>
                 </div>

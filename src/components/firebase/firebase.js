@@ -17,8 +17,11 @@ class Firebase {
         this.auth = app.auth()
         this.db = app.firestore()
         this.provider = new app.auth.GoogleAuthProvider()
+        this.githubProvider = new app.auth.GithubAuthProvider()
     }
     //  AUth API's
+    //  Git hub 
+    githubSignIn = () =>  this.auth.signInWithPopup(this.githubProvider)
     //  Google SignIn
     googleSignIn = () =>  this.auth.signInWithPopup(this.provider)
 

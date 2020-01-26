@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
-import {withRouter} from 'react-router-dom'
 import {withFirebase} from '../firebase'
 import * as ROUTES from '../constants/routes'
+import {withRouter} from 'react-router-dom'
 
-const SignUp = () => {
-    return (
+const SignIn = () => (
         <div className="flexy">
-            <SignUpForm/>
+            <SignInClass/>        
         </div>
-    )
-}
+)
 
 const INITIAL_STATE = {
-    name:'',
     email:'',
     password:'',
-    user:''
+    error:null
 }
 
-class SignFormBase extends Component {
+class SignInFormBase extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -26,27 +23,29 @@ class SignFormBase extends Component {
         }
     }
 
-    onSubmit = e => {
-        e.preventDefault()
-        const {email, password} = this.state
-        this.props.firebase.docreateUser(email,password).then(data => {
-            console.log(data)
-            this.setState({
-                ...INITIAL_STATE
-            })
-            this.props.history.push(ROUTES.HOME)
-        }).catch(e =>  console.log(e))
+    onChange = e => {
+        this.setState({
+            [e.target.name]:e.target.value
+        })
     }
 
-    onChange = e => {
-        this.setState({[e.target.name]: e.target.value})
+    onSubmit = e => {
+        const {email, password} = this.state
+        e.preventDefault()
+        this.props.firebase.doSignInUser(email,password)
+            .then(() => {
+                this.setState({...INITIAL_STATE})
+                this.props.history.push(ROUTES.HOME)
+            }).catch(error => {
+                this.setState({error})
+            })
     }
 
     googleSignIn = () => {
         this.props.firebase.googleSignIn()
             .then(result => {
                 this.setState({
-                    user:result,
+                    user: result,
                     ...INITIAL_STATE
                 })
                 this.props.history.push(ROUTES.HOME)
@@ -56,28 +55,19 @@ class SignFormBase extends Component {
     githubSignIn = () => {
         this.props.firebase.githubSignIn()
             .then(result => {
-                if (result.credential) {
-                }
+                if (result.credential) {}
             }).catch(e => console.log(e))
     }
 
     render() {
-        const {name, email, password} = this.state
-        const isInvalid = name === '' || email === '' || password === '' 
+        const {email,password,error} = this.state
+        const isInvalid = email === '' || password === ''
         return (
             <div className="scontainer flex-center">
                 <div className="signup-form flex-center">
                     <form onSubmit={this.onSubmit} style={{width:"80%"}}>
                         <div className="form-group" style={{justifySelf:"flex-start"}}>
-                            <p style={{fontSize:"30px"}}>Sign Up</p>
-                        </div>
-                        <div className="form-group">
-                            <div className="icon">
-                                <i className="material-icons">
-                                how_to_reg
-                                </i>
-                            </div>
-                            <input type="text" name="name" onChange={this.onChange} value={name} placeholder="Enter Name" className="no-border bottom-border" />
+                            <p style={{fontSize:"30px"}}>Sign In</p>
                         </div>
                         <div className="form-group">
                             <div className="icon">
@@ -96,14 +86,9 @@ class SignFormBase extends Component {
                             <input type="password" name="password" onChange={this.onChange} value={password} placeholder="Enter password" className="no-border bottom-border" />
                         </div>
                         <div className="form-group">
-                            <div style={{paddingBottom:"25px"}}>
-                                <input type="checkbox" id="terms" name="terms"
-                                defaultChecked/>
-                                <label htmlFor="terms">I am agree to all terms & conditions</label>
-                            </div>
-                            <button disabled={isInvalid} className="submit-button" type="submit">Sign Up</button>
-                    </div>
-                </form>
+                            <button disabled={isInvalid} className="submit-button" type="submit">Sign In</button>
+                        </div>
+                    </form>
                 <div style={{marginTop:"1rem"}}>
                     <button className="social-button" onClick={this.googleSignIn}>
                         <img src="/img/search.svg" alt="google sign in"/>
@@ -112,14 +97,16 @@ class SignFormBase extends Component {
                         <img src="/img/github.svg" alt="Github Sign in" style={{width:"100%",height:"100%"}}/>
                     </button>
                 </div>
+                {error && <p>{error.message}</p>}
             </div>
             <div className="signup-info flex-center">
             </div>
-        </div>     
+        </div>
         )
     }
 }
 
-const SignUpForm = withRouter(withFirebase(SignFormBase))
+const SignInClass = withRouter(withFirebase(SignInFormBase))
 
-export default SignUp
+export default SignIn
+

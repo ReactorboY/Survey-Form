@@ -80,3 +80,8 @@
   height: 50px;
   margin: 0 5px;
 }
+
+button[disabled],
+button:disabled {
+  opacity: 0.5;
+}

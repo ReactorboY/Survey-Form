@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import {FirebaseContext} from '../firebase'
 
-export default function SIgnUp() {
-    console.log('Sign Up')
+export default function SignUp() {
     return (
         <div className="flexy">
             <FirebaseContext.Consumer>
@@ -36,7 +35,6 @@ class SignUpForm extends Component {
     googleSignIn = () => {
         this.props.firebase.googleSignIn()
             .then(result => {
-                console.log(result)
                 this.setState({
                     user:result,
                     name:'',
@@ -50,8 +48,6 @@ class SignUpForm extends Component {
         this.props.firebase.githubSignIn()
             .then(result => {
                 if (result.credential) {
-                    let token = result.credential.accessToken;
-                    console.log(token)
                 }
             }).catch(e => console.log(e))
     }

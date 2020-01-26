@@ -1,31 +1,41 @@
 import React, { Component } from 'react'
-import {FirebaseContext} from '../firebase'
+import {withRouter} from 'react-router-dom'
+import {withFirebase} from '../firebase'
+import * as ROUTES from '../constants/routes'
 
-export default function SignUp() {
+const SignUp = () => {
     return (
         <div className="flexy">
-            <FirebaseContext.Consumer>
-                {firebase => <SignUpForm firebase={firebase}/>}
-            </FirebaseContext.Consumer>
+            <SignUpForm/>
         </div>
     )
 }
 
-class SignUpForm extends Component {
+const INITIAL_STATE = {
+    name:'',
+    email:'',
+    password:'',
+    user:''
+}
+
+class SignFormBase extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name:'',
-            email:'',
-            password:'',
-            user:''
+            ...INITIAL_STATE
         }
     }
 
     onSubmit = e => {
         e.preventDefault()
         const {email, password} = this.state
-        this.props.firebase.docreateUser(email,password).then(data => console.log(data)).catch(e =>  console.log(e))
+        this.props.firebase.docreateUser(email,password).then(data => {
+            console.log(data)
+            this.setState({
+                ...INITIAL_STATE
+            })
+            this.props.history.push(ROUTES.HOME)
+        }).catch(e =>  console.log(e))
     }
 
     onChange = e => {
@@ -37,10 +47,9 @@ class SignUpForm extends Component {
             .then(result => {
                 this.setState({
                     user:result,
-                    name:'',
-                    password:'',
-                    email:''
+                    ...INITIAL_STATE
                 })
+                this.props.history.push(ROUTES.HOME)
             }).catch(e => console.log(e))
     }
 
@@ -110,3 +119,7 @@ class SignUpForm extends Component {
         )
     }
 }
+
+const SignUpForm = withRouter(withFirebase(SignFormBase))
+
+export default SignUp

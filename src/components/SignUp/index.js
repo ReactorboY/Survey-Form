@@ -34,7 +34,6 @@ class SignUpForm extends Component {
     }
 
     googleSignIn = () => {
-        console.log('google')
         this.props.firebase.googleSignIn()
             .then(result => {
                 console.log(result)
@@ -48,7 +47,6 @@ class SignUpForm extends Component {
     }
 
     githubSignIn = () => {
-        console.log('github')
         this.props.firebase.githubSignIn()
             .then(result => {
                 if (result.credential) {

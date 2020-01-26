@@ -25,6 +25,8 @@ class SignUpForm extends Component {
 
     onSubmit = e => {
         e.preventDefault()
+        const {email, password} = this.state
+        this.props.firebase.docreateUser(email,password).then(data => console.log(data)).catch(e =>  console.log(e))
     }
 
     onChange = e => {
@@ -58,6 +60,7 @@ class SignUpForm extends Component {
 
     render() {
         const {name, email, password} = this.state
+        const isInvalid = name === '' || email === '' || password === '' 
         return (
             <div className="scontainer flex-center">
                 <div className="signup-form flex-center">
@@ -95,7 +98,7 @@ class SignUpForm extends Component {
                                 defaultChecked/>
                                 <label htmlFor="terms">I am agree to all terms & conditions</label>
                             </div>
-                            <button className="submit-button" type="submit">Sign Up</button>
+                            <button disabled={isInvalid} className="submit-button" type="submit">Sign Up</button>
                     </div>
                 </form>
                 <div style={{marginTop:"1rem"}}>

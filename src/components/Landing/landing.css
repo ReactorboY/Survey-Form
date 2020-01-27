@@ -4,8 +4,7 @@ main {
     box-sizing: border-box;
     display: flex;
     padding: 1rem;
-    background: url('/img/tech.jpg') no-repeat center;
-    background-size: cover;
+    background-image: linear-gradient(90deg, #DC2424 0%, #4A569D 100%);
     max-width: 100%;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +50,7 @@ P {
 
 /* responsive works */
 @media only screen and ( min-width:360px) and (max-width:720px) {
-    h1 {
+    .title {
         font-size: 4rem;
     }
 
@@ -65,9 +64,9 @@ P {
     }
 }
 
-@media only screen and (max-width:320px) {
-    h1 {
-        font-size: 1rem;
+@media only screen and (max-width:360px) {
+    .title {
+        font-size: 4rem;
     }
     #landing_button {
         max-width: 150px;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {withFirebase} from '../firebase'
 import * as ROUTES from '../constants/routes'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 const SignIn = () => (
         <div className="flexy">
@@ -32,7 +32,7 @@ class SignInFormBase extends Component {
     onSubmit = e => {
         const {email, password} = this.state
         e.preventDefault()
-        this.props.firebase.doSignInUser(email,password)
+        this.props.firebase.dosignInUser(email, password)
             .then(() => {
                 this.setState({...INITIAL_STATE})
                 this.props.history.push(ROUTES.HOME)
@@ -97,7 +97,10 @@ class SignInFormBase extends Component {
                         <img src="/img/github.svg" alt="Github Sign in" style={{width:"100%",height:"100%"}}/>
                     </button>
                 </div>
-                {error && <p>{error.message}</p>}
+                <div style={{padding:"20px 0"}}>
+                    <p>Have an account ? <Link to="/signup">Sign Up</Link></p>
+                </div>
+                {error && <p style={{width:"80%",fontSize:"15px",border:"1px solid #e32249",padding:"10px"}}>{error.message}</p>}
             </div>
             <div className="signup-info flex-center">
             </div>

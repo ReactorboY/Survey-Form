@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {withFirebase} from '../firebase'
 import * as ROUTES from '../constants/routes'
 
@@ -111,6 +111,9 @@ class SignFormBase extends Component {
                     <button className="social-button" onClick={this.githubSignIn}>
                         <img src="/img/github.svg" alt="Github Sign in" style={{width:"100%",height:"100%"}}/>
                     </button>
+                </div>
+                <div style={{padding:"20px 0"}}>
+                    <p>Have an account ? <Link to="/signin">Sign In</Link></p>
                 </div>
             </div>
             <div className="signup-info flex-center">
